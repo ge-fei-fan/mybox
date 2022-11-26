@@ -1,0 +1,45 @@
+mysql:
+  path: 192.168.2.100
+  port: "3306"
+  config: charset=utf8mb4&parseTime=True&loc=Local
+  db-name: box
+  username: geff
+  password: "123456"
+  engine: ""
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: error
+  log-zap: false
+zap:
+  level: error
+  prefix: '[MyBox]'
+  format: console
+  director: log
+  encode-level: LowercaseColorLevelEncoder
+  stacktrace-key: stacktrace
+  max-age: 0
+  show-line: true
+  log-in-console: true
+  
+redis:
+  db: 0
+  addr: 192.168.2.100:6379
+  password: ""
+system:
+  env: public
+  addr: 8888
+  db-type: mysql
+  oss-type: local
+  use-redis: true
+  iplimit-count: 15000
+  iplimit-time: 3600
+ 
+local:
+  path: uploads/file
+  store-path: uploads/file
+  
+jwt:
+  signing-key: 09b70634-1056-4891-8555-538e9d43573f
+  expires-time: 7d
+  buffer-time: 1d
+  issuer: geff

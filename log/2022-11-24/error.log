@@ -1,0 +1,8 @@
+[MyBox]2022/11/24 - 13:36:30.010	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
+[MyBox]2022/11/24 - 13:37:41.373	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
+[MyBox]2022/11/24 - 13:39:08.165	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
+[MyBox]2022/11/24 - 15:19:14.009	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
+[MyBox]2022/11/24 - 15:52:15.942	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:64	修改文件夹出错	{"error": "Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?and dir_name =? AND `sys_user_repository`.`deleted_at` IS NULL ORDER BY `sys_us' at line 1"}
+[MyBox]2022/11/24 - 16:05:45.970	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:64	修改文件夹出错	{"error": "Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?and dir_name =? AND `sys_user_repository`.`deleted_at` IS NULL ORDER BY `sys_us' at line 1"}
+[MyBox]2022/11/24 - 16:10:25.157	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:64	修改文件夹出错	{"error": "该目录下文件夹名已存在"}
+[MyBox]2022/11/24 - 16:10:50.554	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:58	文件夹不存在	{"error": "没有文件夹权限"}
