@@ -1,6 +1,0 @@
-[MyBox]2022/11/23 - 00:14:10.480	[31merror[0m	D:/go/mybox/api/v1/file_upload_download.go:25	文件夹不存在	{"error": "没有文件夹权限"}
-[MyBox]2022/11/23 - 23:36:40.860	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:118	获取失败!	{"error": "record not found"}
-[MyBox]2022/11/23 - 23:38:50.898	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
-[MyBox]2022/11/23 - 23:40:08.835	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:118	获取失败!	{"error": "record not found"}
-[MyBox]2022/11/23 - 23:42:13.225	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "文件夹名称已存在"}
-[MyBox]2022/11/23 - 23:50:54.116	[31merror[0m	D:/go/mybox/api/v1/sys_folder.go:37	创建文件夹失败	{"error": "创建文件夹出错"}
