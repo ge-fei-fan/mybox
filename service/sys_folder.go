@@ -22,7 +22,7 @@ func (fs *FolderService) CreateFolder(repository *system.SysUserRepository) (rep
 		}
 		return repositoryInter, errors.New("创建文件夹出错")
 	}
-	return &sur, errors.New("文件夹名称已存在")
+	return &sur, errors.New("此路径下文件夹名称已存在")
 }
 
 func (fs *FolderService) ChangeFolderName(id uint, dirname string) error {
@@ -37,6 +37,7 @@ func (fs *FolderService) ChangeFolderName(id uint, dirname string) error {
 		}
 		return errors.New("操作出错")
 	}
+	//当前路径有没有相同名称的文件夹
 	err = global.BOX_DB.Where("parent_id = ? and dir_name =?", sur.ParentId, dirname).First(&system.SysUserRepository{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -47,5 +48,24 @@ func (fs *FolderService) ChangeFolderName(id uint, dirname string) error {
 	}
 
 	return errors.New("该目录下文件夹名已存在")
+
+}
+func (fs *FolderService) MoveFolder(id, parentid uint) error {
+	if global.BOX_DB == nil {
+		return errors.New("db not init")
+	}
+	var sur system.SysUserRepository
+	err := global.BOX_DB.Where("id = ?", id).First(&sur).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return errors.New("文件夹不存在")
+		}
+		return errors.New("操作出错")
+	}
+	err = global.BOX_DB.Model(&sur).Update("parent_id", parentid).Error
+	if err != nil {
+		return err
+	}
+	return nil
 
 }

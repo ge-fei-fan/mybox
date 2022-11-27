@@ -62,7 +62,36 @@ func (f *FolderApi) ChangeFolderName(c *gin.Context) {
 	}
 	err = folderService.ChangeFolderName(cf.ID, cf.FolderName)
 	if err != nil {
-		global.BOX_LOG.Error("修改文件夹出错", zap.Error(err))
+		global.BOX_LOG.Error("修改文件夹名称出错", zap.Error(err))
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	response.OkWithMessage("修改成功", c)
+}
+
+//移动文件夹
+func (f *FolderApi) MoveFolder(c *gin.Context) {
+	var cf systemReq.ChangeFolder
+	err := c.ShouldBind(&cf)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	if cf.ID == 0 || cf.ParentId == 0 {
+		response.FailWithMessage("参数不足", c)
+		return
+	}
+	//判断是否有文件夹权限
+	claimsId := utils.GetUserId(c)
+	err = fileService.CheckDirId(cf.ParentId, claimsId)
+	if err != nil {
+		global.BOX_LOG.Error("文件夹不存在", zap.Error(err))
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = folderService.MoveFolder(cf.ID, cf.ParentId)
+	if err != nil {
+		global.BOX_LOG.Error("移动文件夹出错", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 		return
 	}

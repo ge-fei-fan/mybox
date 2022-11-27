@@ -16,6 +16,7 @@ func InitFileUploadAndDownloadRouter(Router *gin.RouterGroup) {
 	folderApi := new(v1.FolderApi)
 	{
 		fileUploadAndDownloadRouter.POST("createFolder", folderApi.CreateFolder)         //创建文件夹
+		fileUploadAndDownloadRouter.POST("moveFolder", folderApi.MoveFolder)             //创建文件夹
 		fileUploadAndDownloadRouter.POST("changeFolderName", folderApi.ChangeFolderName) //修改文件夹名称
 	}
 }

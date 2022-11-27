@@ -6,6 +6,7 @@ import (
 	"mime/multipart"
 	"mybox/global"
 	"mybox/model/system"
+	systemResp "mybox/model/system/response"
 	"mybox/utils/upload"
 	"path"
 	"strconv"
@@ -55,16 +56,41 @@ func (fs *FileUploadAndDownloadService) CheckDirId(pathId interface{}, userId ui
 
 }
 
-func (fs *FileUploadAndDownloadService) List(userId, rpositoryId uint) (*[]system.SysUserRepository, *[]system.FileUploadAndDownload, error) {
+func (fs *FileUploadAndDownloadService) List(userId, rpositoryId uint) (*systemResp.ListItem, error) {
 	var rpositoryAll []system.SysUserRepository
 	var files []system.FileUploadAndDownload
+	listItem := systemResp.ListItem{}
+	if global.BOX_DB == nil {
+		return &listItem, errors.New("db not init")
+	}
 	err := global.BOX_DB.Where("sys_user_id=? and parent_id =?", userId, rpositoryId).Find(&rpositoryAll).Error
 	if err != nil {
-		return &rpositoryAll, &files, err
+		return &listItem, err
 	}
 	err = global.BOX_DB.Where("sys_user_repository_id=?", rpositoryId).Find(&files).Error
 	if err != nil {
-		return &rpositoryAll, &files, err
+		return &listItem, err
 	}
-	return &rpositoryAll, &files, nil
+	p, err := fs.GetAllPath(rpositoryId)
+	if err != nil {
+		return &listItem, err
+	}
+	listItem.Path = p
+	listItem.Folder = rpositoryAll
+	listItem.File = files
+	return &listItem, nil
+}
+
+func (fs *FileUploadAndDownloadService) GetAllPath(id uint) (fullPath string, err error) {
+	sur := system.SysUserRepository{}
+	p := ""
+	err = global.BOX_DB.Where("id=?", id).First(&sur).Error
+	if err == nil {
+		if sur.ParentId != 0 {
+			p, _ = fs.GetAllPath(sur.ParentId)
+		}
+		p += sur.DirName + "/"
+		return p, nil
+	}
+	return "", err
 }

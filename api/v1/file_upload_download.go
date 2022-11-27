@@ -56,10 +56,11 @@ func (f *FileUploadAndDownloadApi) List(c *gin.Context) {
 	}
 
 	claimsId := utils.GetUserId(c)
-	floders, files, err := fileService.List(claimsId, cf.ID)
+	list, err := fileService.List(claimsId, cf.ID)
 	if err != nil {
 		global.BOX_LOG.Error("查询出错", zap.Error(err))
 		response.FailWithMessage("查询失败", c)
 	}
-	response.OkWithDetailed(systemResp.ListItem{*floders, *files}, "查询成功", c)
+
+	response.OkWithDetailed(list, "查询成功", c)
 }
