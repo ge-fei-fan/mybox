@@ -1,7 +1,0 @@
-[MyBox]2022/11/20 - 22:24:32.810	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:75	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:25:29.252	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:75	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:27:07.725	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:75	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:29:04.316	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:75	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:29:23.948	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:75	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:36:22.726	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:76	获取token失败!	{"error": "key is of invalid type"}
-[MyBox]2022/11/20 - 22:49:37.752	[31merror[0m	D:/go/mybox/api/v1/sys_user.go:58	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
