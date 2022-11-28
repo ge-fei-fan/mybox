@@ -17,6 +17,7 @@ func RegisterTables(db *gorm.DB) {
 		system.SysUser{},
 		system.FileUploadAndDownload{},
 		system.SysUserRepository{},
+		system.SharePool{},
 	)
 	if err != nil {
 		global.BOX_LOG.Error("register table failed", zap.Error(err))

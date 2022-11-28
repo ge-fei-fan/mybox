@@ -10,6 +10,11 @@ type FileUploadAndDownload struct {
 	Size                int64  `json:"size" gorm:"comment:文件大小"` //文件大小
 }
 
+type ChangeFile struct {
+	Key  string `json:"key" gorm:"comment:编号"`   // 编号，唯一标识
+	Name string `json:"name" gorm:"comment:文件名"` // 重命名的文件名
+}
+
 func (FileUploadAndDownload) TableName() string {
 	return "file_upload_and_downloads"
 }

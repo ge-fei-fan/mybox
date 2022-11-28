@@ -41,7 +41,7 @@ func (f *FolderApi) CreateFolder(c *gin.Context) {
 	response.OkWithDetailed(systemResp.RepositoryResponse{Repository: *repositoryReturn}, "创建文件夹成功", c)
 }
 
-func (f *FolderApi) ChangeFolderName(c *gin.Context) {
+func (f *FolderApi) RenameFolder(c *gin.Context) {
 	var cf systemReq.ChangeFolder
 	err := c.ShouldBind(&cf)
 	if err != nil {

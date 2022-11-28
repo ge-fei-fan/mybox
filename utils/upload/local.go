@@ -59,5 +59,9 @@ func (l *Local) UploadFile(file *multipart.FileHeader) (string, string, error) {
 }
 
 func (l *Local) DeleteFile(key string) error {
+	p := path.Join(global.BOX_CONFIG.Local.StorePath, key)
+	if err := os.Remove(p); err != nil {
+		return errors.New("本地文件删除失败, err:" + err.Error())
+	}
 	return nil
 }

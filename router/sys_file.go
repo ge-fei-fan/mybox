@@ -9,14 +9,18 @@ func InitFileUploadAndDownloadRouter(Router *gin.RouterGroup) {
 	fileUploadAndDownloadRouter := Router.Group("file")
 	fileUploadAndDownloadApi := new(v1.FileUploadAndDownloadApi)
 	{
-		fileUploadAndDownloadRouter.POST("upload", fileUploadAndDownloadApi.UploadFile) //上传文件
-		fileUploadAndDownloadRouter.POST("list", fileUploadAndDownloadApi.List)         //文件信息
+		fileUploadAndDownloadRouter.POST("upload", fileUploadAndDownloadApi.UploadFile)          //上传文件
+		fileUploadAndDownloadRouter.DELETE("", fileUploadAndDownloadApi.DeleteFile)              //上传文件
+		fileUploadAndDownloadRouter.POST("share", fileUploadAndDownloadApi.ShareFile)            //分享文件
+		fileUploadAndDownloadRouter.GET("shareFileInfo", fileUploadAndDownloadApi.ShareFileInfo) //获取分享信息
+		fileUploadAndDownloadRouter.POST("list", fileUploadAndDownloadApi.List)                  //文件信息
+		fileUploadAndDownloadRouter.POST("renameFile", fileUploadAndDownloadApi.RenameFile)      //修改文件名称
 	}
 	//文件夹
 	folderApi := new(v1.FolderApi)
 	{
-		fileUploadAndDownloadRouter.POST("createFolder", folderApi.CreateFolder)         //创建文件夹
-		fileUploadAndDownloadRouter.POST("moveFolder", folderApi.MoveFolder)             //创建文件夹
-		fileUploadAndDownloadRouter.POST("changeFolderName", folderApi.ChangeFolderName) //修改文件夹名称
+		fileUploadAndDownloadRouter.POST("createFolder", folderApi.CreateFolder) //创建文件夹
+		fileUploadAndDownloadRouter.POST("moveFolder", folderApi.MoveFolder)     //创建文件夹
+		fileUploadAndDownloadRouter.POST("renameFolder", folderApi.RenameFolder) //修改文件夹名称
 	}
 }
