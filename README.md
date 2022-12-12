@@ -26,7 +26,7 @@
     - [X] 获取资源详情
     - [ ] 资源保存
 
-#项目展示
+##项目展示
 前端根据项目https://github.com/yddeng/filecloud 修改
 
 - 列表
