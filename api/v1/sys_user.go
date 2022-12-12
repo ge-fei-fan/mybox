@@ -119,5 +119,12 @@ func (b *BaseApi) GetUserInfo(c *gin.Context) {
 		response.FailWithMessage("获取失败", c)
 		return
 	}
-	response.OkWithDetailed(gin.H{"userInfo": ReqUser}, "获取成功", c)
+	var sur system.SysUserRepository
+	err = global.BOX_DB.First(&sur, "sys_user_id = ?", ReqUser.ID).Error
+	if err != nil {
+		global.BOX_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败", c)
+		return
+	}
+	response.OkWithDetailed(gin.H{"userInfo": ReqUser, "pathid": sur.ID}, "获取成功", c)
 }

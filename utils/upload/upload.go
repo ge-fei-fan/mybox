@@ -9,6 +9,8 @@ type OSS interface {
 	//返回值 访问路径，文件名，错误信息
 	UploadFile(file *multipart.FileHeader) (string, string, error)
 	DeleteFile(key string) error
+	BreakPointContinue(chunkNum string, file *multipart.FileHeader) error
+	MergeFile(string, string) (string, string, error)
 }
 
 func NewOss() OSS {

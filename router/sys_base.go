@@ -13,4 +13,8 @@ func InitBaseRouter(Router *gin.RouterGroup) {
 		baseRouter.POST("login", baseApi.Login)
 		//baseRouter.POST("captcha", baseApi.Captcha)
 	}
+	fileUploadAndDownloadRouter := Router.Group("file")
+	fileUploadAndDownloadApi := new(v1.FileUploadAndDownloadApi)
+	fileUploadAndDownloadRouter.POST("shareInfo", fileUploadAndDownloadApi.ShareFileInfo) //获取分享信息
+
 }

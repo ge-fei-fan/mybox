@@ -37,6 +37,7 @@ system:
 local:
   path: uploads/file
   store-path: uploads/file
+  breakpoint-path: uploads/breakpoint
   
 jwt:
   signing-key: 09b70634-1056-4891-8555-538e9d43573f

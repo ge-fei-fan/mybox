@@ -13,7 +13,8 @@ func Router() *gin.Engine {
 
 	//本地存储的实际路径
 	Router.StaticFS(global.BOX_CONFIG.Local.Path, http.Dir(global.BOX_CONFIG.Local.StorePath))
-
+	Router.Use(middleware.Cors()) // 直接放行全部跨域请求
+	global.BOX_LOG.Info("use middleware cors")
 	//不用鉴权的路由组
 	PublicGroup := Router.Group("")
 	{

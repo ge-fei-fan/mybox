@@ -18,3 +18,12 @@ type ChangeFile struct {
 func (FileUploadAndDownload) TableName() string {
 	return "file_upload_and_downloads"
 }
+
+//切片上传结构体
+type File struct {
+	FileName   string `json:"fileName" redis:"FileName"`
+	FilePath   string `json:"filePath" redis:"FilePath"` //文件夹id
+	ChunkTotal string `json:"chunkTotal" redis:"ChunkTotal"`
+	Size       string `json:"size" redis:"Size"`
+	FileMd5    string `json:"fileMd5" redis:"FileMd5"`
+}
