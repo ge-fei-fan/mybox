@@ -1,12 +1,10 @@
 # mybox
 
----
 使用gin框架实现文件存储网盘
 
 
 ## 功能支持
 
----
 - [x] 用户模块
     - [x] 密码登录
     - [ ] 刷新Authorization
@@ -29,7 +27,6 @@
     - [ ] 资源保存
 #项目展示
 
----
 前端根据项目https://github.com/yddeng/filecloud 修改
 
 - 列表
